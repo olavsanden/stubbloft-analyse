@@ -1,0 +1,7 @@
+etasje,PF_stubbloft,PF_utskifting,ratio,Ground%_stubb,Roof%_stubb,Ground%_utsk,Roof%_utsk,mekanisme
+Kjeller,37.07,14.21,2.61,91.9,8.1,35.2,64.8,Kjelleråpning dominerer
+1. etasje,9.64,6.08,1.59,94.6,5.4,59.7,40.3,Ground shine dominerer (fasade)
+2. etasje,26.55,8.41,3.16,72.1,27.9,39.9,60.1,Overgang ground/roof
+3. etasje,27.3,7.58,3.6,25.0,75.0,19.5,80.5,Roof shine dominerer
+4. etasje,11.12,5.06,2.2,4.6,95.4,7.2,92.8,"Roof shine, 1 skiller over"
+5. etasje,2.63,2.58,1.02,0.5,99.5,2.2,97.8,"Kun tak, lite følsom for M_floor"
