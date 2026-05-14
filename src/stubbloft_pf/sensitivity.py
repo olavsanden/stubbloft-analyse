@@ -11,10 +11,21 @@ import pandas as pd
 from .calculations import calculate_rows_for_points, rows_to_dataframe
 from .config import Building, ResultRow
 from .geometry import default_five_points_for_building
-from .physics import stubbloft_floor_mass_from_clay_kg_m2
+from .physics import (
+    stubbloft_floor_mass_from_clay_kg_m2,
+    STUBB_CLAY_THICKNESS_LOW_M,
+    STUBB_CLAY_THICKNESS_MAIN_M,
+    STUBB_CLAY_THICKNESS_HIGH_M,
+)
 from .scenarios import M_STUBB_BEVART, M_FULL_UTSKIFTING
 from .plots import finish_figure, setup_pf_axis_with_dose_axis, short_building_label
 from .scenarios import make_buildings
+
+# Etasjeskillermasser for sensitivitetsspenn — beregnet fra leiretykkelse og konstantene i physics.py.
+# Stubbloftsleire 6–10 cm gir homogenisert etasjeskillermasse 174–230 kg/m².
+_M_STUBB_LOW  = stubbloft_floor_mass_from_clay_kg_m2(STUBB_CLAY_THICKNESS_LOW_M)   # 6 cm → 174 kg/m²
+_M_STUBB_MAIN = stubbloft_floor_mass_from_clay_kg_m2(STUBB_CLAY_THICKNESS_MAIN_M)  # 8 cm → 202 kg/m²
+_M_STUBB_HIGH = stubbloft_floor_mass_from_clay_kg_m2(STUBB_CLAY_THICKNESS_HIGH_M)  # 10 cm → 230 kg/m²
 
 def run_ground_radius_sensitivity(
     base: Building,
@@ -245,17 +256,17 @@ def plot_basement_ceiling_sensitivity(
 def run_floor_mass_sensitivity(
     base: Building,
     scenario_templates: Sequence[Building],
-    stubb_masses_kg_m2: Tuple[float, ...] = (132.0, M_STUBB_BEVART, 202.0),
+    stubb_masses_kg_m2: Tuple[float, ...] = (_M_STUBB_LOW, _M_STUBB_MAIN, _M_STUBB_HIGH),
     rehab_masses_kg_m2: Tuple[float, ...] = (49.0, M_FULL_UTSKIFTING, 76.0),
 ) -> pd.DataFrame:
     # Sensitivitetsanalyse for total etasjeskillermasse.
     #
     # Tester to spenn for begge fasadetyper (mur og tre):
     #
-    # Stubbloft-spenn  (132 – 145 – 202 kg/m²):
-    #   132 = tegningsbasert lav (8 cm leire, c/c 600 mm)
-    #   145 = representativ midtverdi (standard for make_buildings)
-    #   202 = litteraturbasert/stor oppbygning (stubbloft_floor_mass_from_clay_kg_m2(0.08))
+    # Stubbloft-spenn  (174 – 202 – 230 kg/m²), tilsvarer stubbloftsleire 6–10 cm:
+    #   174 = 6 cm leire  (nedre spenn)
+    #   202 = 8 cm leire  (hovedverdi, standard for make_buildings)
+    #   230 = 10 cm leire (øvre spenn, i samsvar med tabellgrunnlag)
     #
     # Rehabilitert-spenn (49 – 62 – 76 kg/m²):
     #   49  = enkel oppbygning (gulv + himling lett)
@@ -634,7 +645,7 @@ def plot_ground_pct_by_radius(
     for ax, col, concept in zip(
         axes,
         ["gnd_pct_s", "gnd_pct_u"],
-        ["Stubbloft bevart (145 kg/m²)", "Full utskifting + mineralull (62 kg/m²)"],
+        [f"Stubbloft bevart ({M_STUBB_BEVART:.0f} kg/m²)", "Full utskifting + mineralull (62 kg/m²)"],
     ):
         for r, color in zip(radii, palette):
             sub = (merged[merged["R_m"] == r]

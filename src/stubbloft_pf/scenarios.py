@@ -6,16 +6,22 @@ from typing import Dict, List, Sequence
 
 from .calculations import calculate_rows_for_points
 from .config import Building, Point, ResultRow
-from .physics import effective_light_joist_floor_mass_kg_m2, light_reference_floor_mass_kg_m2
+from .physics import (
+    effective_light_joist_floor_mass_kg_m2,
+    light_reference_floor_mass_kg_m2,
+    stubbloft_floor_mass_from_clay_kg_m2,
+    STUBB_CLAY_THICKNESS_MAIN_M,
+)
 
 # -----------------------------------------------------------------------
 # Etasjeskillermasser — faglig begrunnet fra tegningsgrunnlag og analyse
 # -----------------------------------------------------------------------
-# Stubbloft bevart: tegningsbasert representativ verdi for bjelke 150×200 mm,
-# 8 cm stubbloftsleire (1400 kg/m³), c/c ~600 mm + realistisk strukturmasse.
-# Historiske/litteraturbaserte verdier kan ligge høyere (opp mot 202 kg/m²);
-# spennet dekkes av run_floor_mass_sensitivity.
-M_STUBB_BEVART: float = 145.0   # kg/m²
+# Stubbloft bevart: homogenisert etasjeskillermasse beregnet som
+#   M = 90 kg/m² (bjelker, bord, gulv, himling) + 1400 kg/m³ × t_leire
+# Tabellgrunnlag: trebjelkelag med stubbloft og 10 cm leirfyll = 230 kg/m².
+# Hovedverdi: 8 cm leire → 202 kg/m².
+# Usikkerhetsspenn 6–10 cm leire (174–230 kg/m²) dekkes av run_floor_mass_sensitivity.
+M_STUBB_BEVART: float = stubbloft_floor_mass_from_clay_kg_m2(STUBB_CLAY_THICKNESS_MAIN_M)  # 202 kg/m²
 
 # Full utskifting: nye gulvåser c/c 300 mm (48×220 mm), 200 mm mineralull,
 # moderne gulvoppbygning og himling. Alle gamle konstruksjonselementer fjernet.
@@ -27,7 +33,7 @@ def make_buildings(base: Building) -> List[Building]:
     # Seks bygningsvarianter: tre etasjeskillernivåer × to fasadetyper.
     #
     # Etasjeskillernivåer:
-    #   stubbloft bevart    145 kg/m²  (tegningsbasert midtverdi)
+    #   stubbloft bevart    202 kg/m²  (8 cm leire, homogenisert fra tabellgrunnlag)
     #   full utskifting      62 kg/m²  (nye åser + mineralull + modern oppbygning)
     #   referanse lett       ~40 kg/m²  (komplett minimal ny konstruksjon, nedre grense)
     #

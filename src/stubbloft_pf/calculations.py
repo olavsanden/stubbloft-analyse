@@ -20,7 +20,7 @@ def calculate_dose_components(
 ) -> DoseComponents:
     # Samler alle dosekomponenter for ett punkt og én etasje.
 
-    Dg_in, avg_cross, avg_soil = integrate_ground_shine(
+    Dg_in, avg_cross, diag_avg_soil = integrate_ground_shine(
         floor_index, x_p, y_p, b, shielded=True
     )
 
@@ -42,7 +42,7 @@ def calculate_dose_components(
         Dg_ref=Dg_ref,
         Dr_ref=Dr_ref,
         avg_floor_crossings=avg_cross,
-        avg_soil_path_m=avg_soil,
+        diag_avg_soil_path_m=diag_avg_soil,
         floor_decks_above=floors_above,
     )
 
@@ -65,7 +65,7 @@ def average_dose_components(components: Sequence[DoseComponents]) -> DoseCompone
         Dg_ref=float(np.mean([c.Dg_ref for c in components])),
         Dr_ref=float(np.mean([c.Dr_ref for c in components])),
         avg_floor_crossings=float(np.mean([c.avg_floor_crossings for c in components])),
-        avg_soil_path_m=float(np.mean([c.avg_soil_path_m for c in components])),
+        diag_avg_soil_path_m=float(np.mean([c.diag_avg_soil_path_m for c in components])),
         # floor_decks_above er bestemt av etasjeindeks alene (ikke av (x,y)-posisjon)
         # og er identisk for alle punkter i samme etasje — hentes fra første element.
         floor_decks_above=components[0].floor_decks_above,
@@ -116,7 +116,7 @@ def result_row_from_components(
         ground_frac=ground_frac,
         roof_frac=roof_frac,
         avg_floor_crossings=c.avg_floor_crossings,
-        avg_soil_path_m=c.avg_soil_path_m,
+        diag_avg_soil_path_m=c.diag_avg_soil_path_m,
         floor_decks_above=c.floor_decks_above,
         Dg_in=c.Dg_in,
         Dr_in=c.Dr_in,
@@ -204,7 +204,7 @@ def rows_to_plot_df(rows: Sequence[ResultRow]) -> pd.DataFrame:
                 "Ground%": 100 * r.ground_frac,
                 "Roof%": 100 * r.roof_frac,
                 "Cross": r.avg_floor_crossings,
-                "Jordbane_m": r.avg_soil_path_m,
+                "Diag_avg_soil_path_m": r.diag_avg_soil_path_m,
                 "Etasjeskiller_over": r.floor_decks_above,
             }
             for r in rows

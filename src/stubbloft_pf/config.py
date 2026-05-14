@@ -104,7 +104,7 @@ class DoseComponents:
     Dg_ref: float
     Dr_ref: float
     avg_floor_crossings: float
-    avg_soil_path_m: float
+    diag_avg_soil_path_m: float  # diagnostic only — not an input to the PF calculation
     floor_decks_above: int
 
 
@@ -127,9 +127,9 @@ class ResultRow:
     ground_frac: float
     roof_frac: float
 
-    # Diagnostikk fra geometrimodellen
+    # Diagnostikk fra geometrimodellen — ikke input til PF-beregningen
     avg_floor_crossings: float
-    avg_soil_path_m: float
+    diag_avg_soil_path_m: float  # diagnostic only — reported for interpretation, not used in PF
     floor_decks_above: int
 
     # Råe dosekomponenter — for etterprøving og debugging.

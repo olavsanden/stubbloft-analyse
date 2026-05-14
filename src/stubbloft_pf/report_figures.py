@@ -428,7 +428,7 @@ def _make_tables(df: pd.DataFrame, output_dir: Path) -> None:
 
     # ── Tabell 4: sensitivity_summary ──────────────────────────────────
     rows_t4 = [
-        {"sensitivitet": "Stubbloft-totalmasse (132–202 kg/m²)", "påvirker_mest": "2.–4. etasje", "endrer_konklusjon": "Nei", "kommentar": "Spenn ±20% i PF, ikke retningsendring"},
+        {"sensitivitet": "Stubbloft-totalmasse (174–230 kg/m², leire 6–10 cm)", "påvirker_mest": "2.–4. etasje", "endrer_konklusjon": "Nei", "kommentar": "Spenn ±20% i PF, ikke retningsendring"},
         {"sensitivitet": "Rehabilitert-masse (49–76 kg/m²)",     "påvirker_mest": "2.–4. etasje", "endrer_konklusjon": "Nei", "kommentar": "Liten effekt, PF nær uendret"},
         {"sensitivitet": "Kjelleråpningstype",                    "påvirker_mest": "Kjeller",       "endrer_konklusjon": "Ja for kjeller", "kommentar": "PF varierer sterkt (7–47 Murbygg)"},
         {"sensitivitet": "Ground radius (30–100 m)",              "påvirker_mest": "Alle",           "endrer_konklusjon": "Nei", "kommentar": "Marginal effekt"},
@@ -613,8 +613,12 @@ def _fig_luf_band(
     PF-profil med sensitivitetsbånd basert på M_floor-spenn.
     clean=True: ingen tittel — klar for direkte innliming i Overleaf.
     Båndet er IKKE basert på kjelleråpningstype, men på etasjeskillermasse:
-      stubbloft 132–230 kg/m²,  utskifting 49–76 kg/m².
+      stubbloft 174–230 kg/m² (6–10 cm leire),  utskifting 49–76 kg/m².
     """
+    from .physics import stubbloft_floor_mass_from_clay_kg_m2, STUBB_CLAY_THICKNESS_LOW_M, STUBB_CLAY_THICKNESS_HIGH_M
+    _M_STUBB_LUF_LOW  = stubbloft_floor_mass_from_clay_kg_m2(STUBB_CLAY_THICKNESS_LOW_M)   # 174 kg/m²
+    _M_STUBB_LUF_HIGH = stubbloft_floor_mass_from_clay_kg_m2(STUBB_CLAY_THICKNESS_HIGH_M)  # 230 kg/m²
+
     sc_slug = "luftespalte_15x15_cm"
     suffix  = "_clean" if clean else ""
     fname   = f"{fig_num}_pf_band_{facade.lower()}bygg_{sc_slug}{suffix}.png"
@@ -626,9 +630,9 @@ def _fig_luf_band(
     du = _luf_data(df, facade, "full utskifting")
     y, labels = _floor_y(ds)
 
-    # Sensitivitetsbånd: M_floor-spenn, ikke kjelleråpningstype
+    # Sensitivitetsbånd: M_floor-spenn (leiretykkelse 6–10 cm), ikke kjelleråpningstype
     if base is not None:
-        s_min, s_max = _compute_mass_band(base, facade, 132.0, 230.0, M_wall, M_found)
+        s_min, s_max = _compute_mass_band(base, facade, _M_STUBB_LUF_LOW, _M_STUBB_LUF_HIGH, M_wall, M_found)
         u_min, u_max = _compute_mass_band(base, facade,  49.0,  76.0, M_wall, M_found)
     else:
         s_min = s_max = ds["PF"].values
@@ -646,7 +650,7 @@ def _fig_luf_band(
 
     # Sensitivitetsbånd (legges bak kurvene)
     ax.fill_betweenx(y, s_min, s_max, alpha=0.20, color=C["stubb"],
-                     label="Etasjeskiller 132–230 kg/m²", zorder=1)
+                     label=f"Stubbloftsleire 6–10 cm ({_M_STUBB_LUF_LOW:.0f}–{_M_STUBB_LUF_HIGH:.0f} kg/m²)", zorder=1)
     ax.fill_betweenx(y, u_min, u_max, alpha=0.20, color=C["utskiftet"],
                      label="Etasjeskiller 49–76 kg/m²", zorder=1)
 

@@ -151,14 +151,22 @@ def calculate_ground_shine_transmission(
     trans = T_facade_soil * T_floors
     trans[~valid] = 0.0
 
-    # Effektiv jordbane: settes til null for åpningsandelen i eksponert kjellerstripe.
-    # Brukes kun som diagnostisk rapporteringsverdi (avg_soil_path_m i resultattabellen).
-    # Påvirker ikke PF — transmisjonsberegningene over bruker raw_soil_length direkte.
-    effective_soil_length = np.where(
-        exposed_basement_band,
-        raw_soil_length * (1.0 - f_b),
-        raw_soil_length,
-    )
+    # Diagnostic only: this effective soil length is averaged and reported in the result
+    # table (diag_avg_soil_path_m). It is NOT used as input to the PF/groundshine
+    # calculation — all transmission terms above use raw_soil_length directly.
+    #
+    # For "exposed_above_grade": the opening fraction (f_b) reaches air without soil,
+    # so the diagnostikk reflects that the opening contributes zero soil path.
+    # For "below_grade": the opening is also below grade and has the same soil path
+    # as the closed wall, so raw_soil_length is used without deduction.
+    if b.basement_opening_mode == "exposed_above_grade":
+        effective_soil_length = np.where(
+            exposed_basement_band,
+            raw_soil_length * (1.0 - f_b),
+            raw_soil_length,
+        )
+    else:  # "below_grade"
+        effective_soil_length = raw_soil_length
 
     return trans, n_cross, effective_soil_length
 
@@ -219,6 +227,7 @@ def integrate_ground_shine(
         weighted_soil += float(trap_integral(soil_length * geom * r, r)) * dphi
 
     avg_cross = weighted_cross / max(total_geom, 1e-30)
-    avg_soil = weighted_soil / max(total_geom, 1e-30)
+    # Diagnostic average soil path — see comment in calculate_ground_shine_transmission.
+    diag_avg_soil_path_m = weighted_soil / max(total_geom, 1e-30)
 
-    return total, avg_cross, avg_soil
+    return total, avg_cross, diag_avg_soil_path_m

@@ -73,9 +73,28 @@ def light_reference_floor_mass_kg_m2() -> float:
     return effective_light_joist_floor_mass_kg_m2() + 11.0 + 3.0   # ≈ 40 kg/m²
 
 
+# -----------------------------------------------------------------------
+# Materialkonstanter for stubbloftsetasjeskille
+# -----------------------------------------------------------------------
+# Homogenisert etasjeskillermasse beregnes som:
+#   M_stubb = STUBB_OTHER_FLOOR_MASS_KG_M2 + STUBB_CLAY_DENSITY_KG_M3 * t_leire
+#
+# Tabellgrunnlag (egenvekt):
+#   Trebjelkelag med plankegolv, stubbloft, underloft og 10 cm leirfyll = 230 kg/m²
+#   → 230 − 1400 × 0.10 = 90 kg/m² for resterende konstruksjonskomponenter
+#
+# Usikkerhetsspenn for leiretykkelse: 6–10 cm, noe som gir 174–230 kg/m² totalt.
+# Hovedverdi: 8 cm leire → 202 kg/m².
+STUBB_CLAY_DENSITY_KG_M3: float = 1400.0   # kg/m³, egenvekt stubbloftsleire
+STUBB_OTHER_FLOOR_MASS_KG_M2: float = 90.0  # kg/m², bjelker, bord, gulv, himling m.m.
+STUBB_CLAY_THICKNESS_LOW_M: float = 0.06    # m, leiretykkelse nedre spenn (6 cm → 174 kg/m²)
+STUBB_CLAY_THICKNESS_MAIN_M: float = 0.08   # m, leiretykkelse hovedverdi (8 cm → 202 kg/m²)
+STUBB_CLAY_THICKNESS_HIGH_M: float = 0.10   # m, leiretykkelse øvre spenn (10 cm → 230 kg/m²)
+
+
 def stubbloft_clay_mass_kg_m2(
     clay_thickness_m: float,
-    clay_density_kg_m3: float = 1400.0,
+    clay_density_kg_m3: float = STUBB_CLAY_DENSITY_KG_M3,
 ) -> float:
     # Arealmasse for selve leirlaget i stubbloft.
 
@@ -99,14 +118,14 @@ def stubbloft_clay_mass_kg_m2(
 
 def stubbloft_floor_mass_from_clay_kg_m2(
     clay_thickness_m: float,
-    clay_density_kg_m3: float = 1400.0,
-    other_floor_mass_kg_m2: float = 90.0,
+    clay_density_kg_m3: float = STUBB_CLAY_DENSITY_KG_M3,
+    other_floor_mass_kg_m2: float = STUBB_OTHER_FLOOR_MASS_KG_M2,
 ) -> float:
     # Effektiv arealmasse for komplett eldre etasjeskiller med stubbloft.
 
-    # other_floor_mass_kg_m2 representerer bjelker, bord, gulv, himling m.m. Verdien
-    # 90 kg/m2 er valgt slik at 10 cm leire gir ca. 230 kg/m2 totalt når leira er
-    # ca. 140 kg/m2. Dette gjør 6-10 cm til et nyttig usikkerhetsspenn.
+    # other_floor_mass_kg_m2 representerer bjelker, bord, gulv, himling m.m. (90 kg/m²).
+    # Valgt slik at 10 cm leire gir 230 kg/m² totalt, i samsvar med tabellgrunnlag.
+    # Se STUBB_* konstantene over for dokumentasjon av usikkerhetsspenn.
 
     return other_floor_mass_kg_m2 + stubbloft_clay_mass_kg_m2(
         clay_thickness_m, clay_density_kg_m3

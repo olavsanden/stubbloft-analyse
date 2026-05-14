@@ -26,6 +26,11 @@ from .plots import (
     plot_pf_reduction_pct,
     plot_pf_sensitivity_band_by_facade,
 )
+from .physics import (
+    stubbloft_floor_mass_from_clay_kg_m2,
+    STUBB_CLAY_THICKNESS_LOW_M,
+    STUBB_CLAY_THICKNESS_HIGH_M,
+)
 from .scenarios import (
     M_FULL_UTSKIFTING,
     M_STUBB_BEVART,
@@ -114,7 +119,7 @@ def main() -> None:
     # Bør aktiveres når kjellerresultater diskuteres i rapporten.
     RUN_BASEMENT_CEILING_SENSITIVITY = False
 
-    # Etasjeskillermasse-spenn: stubbloft 132–202 kg/m² og utskiftet 49–76 kg/m².
+    # Etasjeskillermasse-spenn: stubbloft 174–230 kg/m² (6–10 cm leire) og utskiftet 49–76 kg/m².
     # Bør aktiveres når 2.–4. etasje-resultater presenteres.
     RUN_FLOOR_MASS_SENSITIVITY = False
 
@@ -182,7 +187,9 @@ def main() -> None:
     # ------------------------------------------------------------
     # Hovedberegning
     # ------------------------------------------------------------
-    M_STUBB_LOW,  M_STUBB_HIGH = 132.0, 230.0
+    # Sensitivitetsspenn for stubbloft: 6–10 cm leire → 174–230 kg/m²
+    M_STUBB_LOW  = stubbloft_floor_mass_from_clay_kg_m2(STUBB_CLAY_THICKNESS_LOW_M)   # 174 kg/m²
+    M_STUBB_HIGH = stubbloft_floor_mass_from_clay_kg_m2(STUBB_CLAY_THICKNESS_HIGH_M)  # 230 kg/m²
     M_UTSK_LOW,   M_UTSK_HIGH  = 49.0,  76.0
 
     _facade_configs = [
@@ -385,7 +392,9 @@ def main() -> None:
     # PF-band med sensitivitet per fasadetype
     # ------------------------------------------------------------
     if RUN_FIGURES:
-        M_STUBB_LOW,  M_STUBB_HIGH = 132.0, 230.0
+        # Samme spenn som i Hovedberegning: 6–10 cm leire → 174–230 kg/m²
+        M_STUBB_LOW  = stubbloft_floor_mass_from_clay_kg_m2(STUBB_CLAY_THICKNESS_LOW_M)
+        M_STUBB_HIGH = stubbloft_floor_mass_from_clay_kg_m2(STUBB_CLAY_THICKNESS_HIGH_M)
         M_UTSK_LOW,   M_UTSK_HIGH  = 49.0,  76.0
 
         band_scenario = scenarios[0]
