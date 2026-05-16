@@ -1,5 +1,5 @@
 # Figur-manifest
-Generert: 2026-05-13 14:32
+Generert: 2026-05-14 20:51
 Kopiert: 73  ·  Manglende forventede: 0
 
 ---

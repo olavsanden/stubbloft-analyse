@@ -1,0 +1,18 @@
+parameter,level,PF_bygg,PF_kjeller,PF_3etasje,PF_5etasje,minimum_PF_1til4,change_from_baseline_percent
+Integrasjonsradius,R = 100 m,27.77,41.37,50.46,2.767,9.816,-9.09
+Integrasjonsradius,R = 150 m,26.44,42.65,47.52,2.837,9.735,-13.42
+Integrasjonsradius,R = 30 m,37.19,37.96,66.26,2.364,10.85,21.76
+Integrasjonsradius,R = 60 m,30.54,39.9,56.1,2.636,10.08,0
+Etasjeskillermasse,174 kg/m²,24.35,39.14,40.16,2.634,9.949,-20.28
+Etasjeskillermasse,202 kg/m²,30.54,39.9,56.1,2.636,10.08,0
+Etasjeskillermasse,230 kg/m²,37.33,40.19,75.02,2.637,10.14,22.23
+Takmodell,Flatt tak,31.25,52.37,52.5,2.602,13.08,2.3
+Takmodell,Saltak 45°,30.54,39.9,56.1,2.636,10.08,0
+Kjelleråpning,40x60 cm,30.54,39.9,56.1,2.636,10.08,0
+Kjelleråpning,60x30 cm,30.54,52.99,56.1,2.636,10.08,0
+Kjelleråpning,Luftespalte 15x15 cm,28.55,328.2,53.88,2.635,8.661,-6.53
+Kjellerdekke,Standard (202 kg/m²),30.54,39.9,56.1,2.636,10.08,0
+Kjellerdekke,Tungt (300 kg/m²),30.54,40.13,56.1,2.636,10.08,0
+µ/ρ (metodisk),µ/ρ = 0.0065,26.11,39.11,45.35,2.574,9.691,-14.49
+µ/ρ (metodisk),µ/ρ = 0.0070,30.54,39.9,56.1,2.636,10.08,0
+µ/ρ (metodisk),µ/ρ = 0.0075,35.46,40.57,68.73,2.698,10.43,16.1

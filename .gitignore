@@ -1,0 +1,14 @@
+.DS_Store
+**/.DS_Store
+.vscode/
+__pycache__/
+*.pyc
+figures/archive/
+output/figures/
+.DS_Store
+**/.DS_Store
+.vscode/
+__pycache__/
+*.pyc
+figures/archive/
+output/figures/

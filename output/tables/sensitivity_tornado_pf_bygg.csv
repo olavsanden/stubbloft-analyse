@@ -1,0 +1,7 @@
+parameter,baseline_value,low_level,high_level,PF_baseline,PF_low,PF_high,change_low_percent,change_high_percent,span_percent,note
+Etasjeskillermasse,30.54,174 kg/m²,230 kg/m²,30.54,24.35,37.33,-20.28,22.23,42.51,
+Integrasjonsradius,30.54,R = 150 m,R = 30 m,30.54,26.44,37.19,-13.42,21.76,35.18,
+µ/ρ (metodisk),30.54,µ/ρ = 0.0065,µ/ρ = 0.0075,30.54,26.11,35.46,-14.49,16.1,30.6,
+Kjelleråpning,30.54,Luftespalte 15x15 cm,40x60 cm,30.54,28.55,30.54,-6.53,0,6.53,
+Takmodell,30.54,Saltak 45°,Flatt tak,30.54,30.54,31.25,0,2.3,2.3,
+Kjellerdekke,30.54,Standard (202 kg/m²),Standard (202 kg/m²),30.54,30.54,30.54,0,0,0,

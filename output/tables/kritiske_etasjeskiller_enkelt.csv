@@ -1,0 +1,6 @@
+scenario_type,utskiftet_dekke_1,PF_bygg,PF_3etasje,PF_kjeller,PF_5etasje,minimum_PF_1til4,reduksjon_PF_bygg_abs,reduksjon_PF_bygg_prosent,reduksjon_PF_3etasje_prosent,H_inne_bygg_50mSv,ekstra_dose_50mSv,rang
+enkelt,Dekke 4.–5. et.,17.85,24.74,39.14,2.611,5.373,12.69,41.56,55.9,2.801,1.164,1
+enkelt,Dekke 3.–4. et.,20.68,24.74,39.14,2.633,9.895,9.861,32.29,55.9,2.418,0.7806,2
+enkelt,Dekke 2.–3. et.,23.34,34.17,39.14,2.635,9.895,7.199,23.57,39.08,2.142,0.5049,3
+enkelt,Dekke 1.–2. et.,24.9,51.74,39.14,2.635,9.895,5.643,18.48,7.78,2.008,0.371,4
+enkelt,Kjellerdekke,30.54,56.1,39.14,2.636,10.08,0,0,0,1.637,0,5

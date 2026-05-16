@@ -1,0 +1,31 @@
+scenario,utskiftet_dekke,etasje,PF_ref,PF_scenario,PF_reduksjon_abs,PF_reduksjon_prosent
+Kjellervindu 40x60 cm,Kjellerdekke,Kjeller,39.9,39.14,0.7647,1.92
+Kjellervindu 40x60 cm,Kjellerdekke,1. etasje,10.08,10.08,0,0
+Kjellervindu 40x60 cm,Kjellerdekke,2. etasje,37.8,37.8,0,0
+Kjellervindu 40x60 cm,Kjellerdekke,3. etasje,56.1,56.1,0,0
+Kjellervindu 40x60 cm,Kjellerdekke,4. etasje,18.18,18.18,0,0
+Kjellervindu 40x60 cm,Kjellerdekke,5. etasje,2.636,2.636,0,0
+Kjellervindu 40x60 cm,Dekke 1.–2. et.,Kjeller,39.9,39.14,0.7647,1.92
+Kjellervindu 40x60 cm,Dekke 1.–2. et.,1. etasje,10.08,9.895,0.1869,1.85
+Kjellervindu 40x60 cm,Dekke 1.–2. et.,2. etasje,37.8,19.84,17.96,47.52
+Kjellervindu 40x60 cm,Dekke 1.–2. et.,3. etasje,56.1,51.74,4.363,7.78
+Kjellervindu 40x60 cm,Dekke 1.–2. et.,4. etasje,18.18,18.12,0.0586,0.32
+Kjellervindu 40x60 cm,Dekke 1.–2. et.,5. etasje,2.636,2.635,0.0002,0.01
+Kjellervindu 40x60 cm,Dekke 2.–3. et.,Kjeller,39.9,39.14,0.7647,1.92
+Kjellervindu 40x60 cm,Dekke 2.–3. et.,1. etasje,10.08,9.895,0.1869,1.85
+Kjellervindu 40x60 cm,Dekke 2.–3. et.,2. etasje,37.8,31.39,6.409,16.95
+Kjellervindu 40x60 cm,Dekke 2.–3. et.,3. etasje,56.1,34.17,21.93,39.08
+Kjellervindu 40x60 cm,Dekke 2.–3. et.,4. etasje,18.18,17.91,0.2746,1.51
+Kjellervindu 40x60 cm,Dekke 2.–3. et.,5. etasje,2.636,2.635,0.0007,0.03
+Kjellervindu 40x60 cm,Dekke 3.–4. et.,Kjeller,39.9,39.14,0.7647,1.92
+Kjellervindu 40x60 cm,Dekke 3.–4. et.,1. etasje,10.08,9.895,0.1869,1.85
+Kjellervindu 40x60 cm,Dekke 3.–4. et.,2. etasje,37.8,31.39,6.409,16.95
+Kjellervindu 40x60 cm,Dekke 3.–4. et.,3. etasje,56.1,24.74,31.36,55.9
+Kjellervindu 40x60 cm,Dekke 3.–4. et.,4. etasje,18.18,16.69,1.489,8.19
+Kjellervindu 40x60 cm,Dekke 3.–4. et.,5. etasje,2.636,2.633,0.0025,0.09
+Kjellervindu 40x60 cm,Dekke 4.–5. et.,Kjeller,39.9,39.14,0.7647,1.92
+Kjellervindu 40x60 cm,Dekke 4.–5. et.,1. etasje,10.08,9.895,0.1869,1.85
+Kjellervindu 40x60 cm,Dekke 4.–5. et.,2. etasje,37.8,31.39,6.409,16.95
+Kjellervindu 40x60 cm,Dekke 4.–5. et.,3. etasje,56.1,24.74,31.36,55.9
+Kjellervindu 40x60 cm,Dekke 4.–5. et.,4. etasje,18.18,5.373,12.81,70.45
+Kjellervindu 40x60 cm,Dekke 4.–5. et.,5. etasje,2.636,2.611,0.0247,0.94

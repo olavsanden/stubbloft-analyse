@@ -1,0 +1,11 @@
+scenario_type,utskiftet_dekke_1,utskiftet_dekke_2,PF_bygg,PF_3etasje,PF_kjeller,PF_5etasje,minimum_PF_1til4,reduksjon_PF_bygg_abs,reduksjon_PF_bygg_prosent,reduksjon_PF_3etasje_prosent,H_inne_bygg_50mSv,ekstra_dose_50mSv,rang
+dobbel,Dekke 3.–4. et.,Dekke 4.–5. et.,11.12,8.863,37.18,2.599,5.235,19.42,63.58,84.2,4.495,2.858,1
+dobbel,Dekke 2.–3. et.,Dekke 4.–5. et.,13.76,19.28,37.18,2.608,5.348,16.78,54.96,65.63,3.635,1.997,2
+dobbel,Dekke 1.–2. et.,Dekke 4.–5. et.,14.14,23.85,37.18,2.61,5.368,16.41,53.72,57.48,3.537,1.9,3
+dobbel,Dekke 2.–3. et.,Dekke 3.–4. et.,16.33,19.28,37.18,2.631,9.406,14.21,46.53,65.63,3.062,1.425,4
+dobbel,Dekke 1.–2. et.,Dekke 3.–4. et.,16.92,23.85,37.18,2.632,9.406,13.62,44.59,57.48,2.955,1.317,5
+dobbel,Kjellerdekke,Dekke 4.–5. et.,17.85,24.74,37.18,2.611,5.373,12.69,41.56,55.9,2.801,1.164,6
+dobbel,Dekke 1.–2. et.,Dekke 2.–3. et.,18.03,27.09,37.18,2.634,9.406,12.51,40.97,51.71,2.773,1.136,7
+dobbel,Kjellerdekke,Dekke 3.–4. et.,20.68,24.74,37.18,2.633,9.895,9.861,32.29,55.9,2.418,0.7806,8
+dobbel,Kjellerdekke,Dekke 2.–3. et.,23.34,34.17,37.18,2.635,9.895,7.199,23.57,39.08,2.142,0.5049,9
+dobbel,Kjellerdekke,Dekke 1.–2. et.,24.9,51.74,37.18,2.635,9.895,5.643,18.48,7.78,2.008,0.371,10

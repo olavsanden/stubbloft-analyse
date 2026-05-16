@@ -1,0 +1,31 @@
+utskiftet_dekke,etasje,PF_ref,PF_scenario,PF_reduksjon_prosent,PF_reduksjon_abs
+Kjellerdekke,Kjeller,39.9,39.14,1.9,0.76
+Kjellerdekke,1. etasje,10.08,10.08,0.0,0.0
+Kjellerdekke,2. etasje,37.8,37.8,0.0,0.0
+Kjellerdekke,3. etasje,56.1,56.1,0.0,0.0
+Kjellerdekke,4. etasje,18.18,18.18,0.0,0.0
+Kjellerdekke,5. etasje,2.64,2.64,0.0,0.0
+Dekke 1.–2. et.,Kjeller,39.9,39.14,1.9,0.76
+Dekke 1.–2. et.,1. etasje,10.08,9.9,1.9,0.19
+Dekke 1.–2. et.,2. etasje,37.8,19.84,47.5,17.96
+Dekke 1.–2. et.,3. etasje,56.1,51.74,7.8,4.36
+Dekke 1.–2. et.,4. etasje,18.18,18.12,0.3,0.06
+Dekke 1.–2. et.,5. etasje,2.64,2.64,0.0,0.0
+Dekke 2.–3. et.,Kjeller,39.9,39.14,1.9,0.76
+Dekke 2.–3. et.,1. etasje,10.08,9.9,1.9,0.19
+Dekke 2.–3. et.,2. etasje,37.8,31.39,17.0,6.41
+Dekke 2.–3. et.,3. etasje,56.1,34.17,39.1,21.93
+Dekke 2.–3. et.,4. etasje,18.18,17.91,1.5,0.27
+Dekke 2.–3. et.,5. etasje,2.64,2.63,0.0,0.0
+Dekke 3.–4. et.,Kjeller,39.9,39.14,1.9,0.76
+Dekke 3.–4. et.,1. etasje,10.08,9.9,1.9,0.19
+Dekke 3.–4. et.,2. etasje,37.8,31.39,17.0,6.41
+Dekke 3.–4. et.,3. etasje,56.1,24.74,55.9,31.36
+Dekke 3.–4. et.,4. etasje,18.18,16.69,8.2,1.49
+Dekke 3.–4. et.,5. etasje,2.64,2.63,0.1,0.0
+Dekke 4.–5. et.,Kjeller,39.9,39.14,1.9,0.76
+Dekke 4.–5. et.,1. etasje,10.08,9.9,1.9,0.19
+Dekke 4.–5. et.,2. etasje,37.8,31.39,17.0,6.41
+Dekke 4.–5. et.,3. etasje,56.1,24.74,55.9,31.36
+Dekke 4.–5. et.,4. etasje,18.18,5.37,70.5,12.81
+Dekke 4.–5. et.,5. etasje,2.64,2.61,0.9,0.02

@@ -1,0 +1,7 @@
+type,beskrivelse,PF_bygg,reduksjon_%,ekstra_dose_mSv
+referanse,Alle dekk stubbloft (referanse),30.5417,0.0,0.0
+verste_enkelt,Dekke 4.–5. et.,17.85,41.56,1.164
+minst_alvorlig_enkelt,Kjellerdekke,30.5417,0.0,0.0
+verste_dobbel,Dekke 3.–4. et. + Dekke 4.–5. et.,11.1236,63.58,2.8578
+minst_alvorlig_dobbel,Kjellerdekke + Dekke 1.–2. et.,24.899,18.48,0.371
+bevaringsprioritet,"Bevaringsprioritet: Dekke 4.–5. et., Dekke 3.–4. et., Dekke 2.–3. et., Dekke 1.–2. et., Kjellerdekke",,,
