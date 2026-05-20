@@ -1,13 +1,13 @@
 variant_stem,building,scenario,etasje,PF,PF_norm,ground_andel,roof_andel,sum_check,Dg_in,Dr_in,M_floor_kg_m2,M_wall_kg_m2
-murbygg_stubbloft,Murbygg | stubbloft bevart,Kjellervindu 40x60 cm,Kjeller,39.9006,0.711249,0.988736,0.011264,1,0.03842565,0.00043776647,202,450
-murbygg_stubbloft,Murbygg | stubbloft bevart,Kjellervindu 40x60 cm,1. etasje,10.0822,0.17972,0.989368,0.010632,1,0.19131609,0.0020559745,202,450
-murbygg_stubbloft,Murbygg | stubbloft bevart,Kjellervindu 40x60 cm,2. etasje,37.8016,0.673832,0.889934,0.110066,1,0.081842502,0.010122171,202,450
-murbygg_stubbloft,Murbygg | stubbloft bevart,Kjellervindu 40x60 cm,3. etasje,56.0994,1,0.371772,0.628228,1,0.031135179,0.052612778,202,450
-murbygg_stubbloft,Murbygg | stubbloft bevart,Kjellervindu 40x60 cm,4. etasje,18.1835,0.324131,0.050418,0.949582,1,0.016160371,0.30436935,202,450
-murbygg_stubbloft,Murbygg | stubbloft bevart,Kjellervindu 40x60 cm,5. etasje,2.6356,0.046981,0.003051,0.996949,1,0.0081933457,2.6771997,202,450
-trebygg_lett,Trebygg | referanse lett,Kjellervindu 40x60 cm,Kjeller,7.8809,1,0.195928,0.804072,1,0.038551692,0.15821261,40.375,80
-trebygg_lett,Trebygg | referanse lett,Kjellervindu 40x60 cm,1. etasje,2.7909,0.354135,0.642285,0.357715,1,0.44867515,0.24988553,40.375,80
-trebygg_lett,Trebygg | referanse lett,Kjellervindu 40x60 cm,2. etasje,3.3607,0.426442,0.598072,0.401928,1,0.618657,0.41576206,40.375,80
-trebygg_lett,Trebygg | referanse lett,Kjellervindu 40x60 cm,3. etasje,3.4238,0.434451,0.475663,0.524337,1,0.65270566,0.71949519,40.375,80
-trebygg_lett,Trebygg | referanse lett,Kjellervindu 40x60 cm,4. etasje,3.0095,0.381877,0.321262,0.678738,1,0.62216958,1.3144729,40.375,80
-trebygg_lett,Trebygg | referanse lett,Kjellervindu 40x60 cm,5. etasje,2.1702,0.275376,0.179087,0.820913,1,0.58404534,2.6771997,40.375,80
+murbygg_stubbloft,Murbygg | stubbloft bevart,Luftespalte 15x15 cm,Kjeller,328.2181,1,0.907342,0.092658,1,0.0042867584,0.00043776647,202,450
+murbygg_stubbloft,Murbygg | stubbloft bevart,Luftespalte 15x15 cm,1. etasje,8.6608,0.026387,0.990867,0.009133,1,0.2230513,0.0020559745,202,450
+murbygg_stubbloft,Murbygg | stubbloft bevart,Luftespalte 15x15 cm,2. etasje,33.5605,0.102251,0.902283,0.097717,1,0.093464246,0.010122171,202,450
+murbygg_stubbloft,Murbygg | stubbloft bevart,Luftespalte 15x15 cm,3. etasje,53.8825,0.164167,0.396599,0.603401,1,0.03458089,0.052612778,202,450
+murbygg_stubbloft,Murbygg | stubbloft bevart,Luftespalte 15x15 cm,4. etasje,18.0873,0.055108,0.055444,0.944556,1,0.017866095,0.30436935,202,450
+murbygg_stubbloft,Murbygg | stubbloft bevart,Luftespalte 15x15 cm,5. etasje,2.6347,0.008027,0.003386,0.996614,1,0.0090962663,2.6771997,202,450
+trebygg_lett,Trebygg | referanse lett,Luftespalte 15x15 cm,Kjeller,9.5342,1,0.02724,0.97276,1,0.0044303739,0.15821261,40.375,80
+trebygg_lett,Trebygg | referanse lett,Luftespalte 15x15 cm,1. etasje,2.6696,0.280004,0.65783,0.34217,1,0.48041037,0.24988553,40.375,80
+trebygg_lett,Trebygg | referanse lett,Luftespalte 15x15 cm,2. etasje,3.2503,0.340904,0.611285,0.388715,1,0.65381728,0.41576206,40.375,80
+trebygg_lett,Trebygg | referanse lett,Luftespalte 15x15 cm,3. etasje,3.3474,0.351092,0.487373,0.512627,1,0.68404871,0.71949519,40.375,80
+trebygg_lett,Trebygg | referanse lett,Luftespalte 15x15 cm,4. etasje,2.9718,0.311694,0.329779,0.670221,1,0.64678025,1.3144729,40.375,80
+trebygg_lett,Trebygg | referanse lett,Luftespalte 15x15 cm,5. etasje,2.1571,0.226243,0.18406,0.81594,1,0.60392544,2.6771997,40.375,80

@@ -34,7 +34,7 @@ OUTPUT_FIGURES.mkdir(parents=True, exist_ok=True)
 OUTPUT_TABLES.mkdir(parents=True, exist_ok=True)
 
 # ── Constants ─────────────────────────────────────────────────────────────────
-SCENARIO = "Kjellervindu 40x60 cm"
+SCENARIO = "Luftespalte 15x15 cm"
 
 FLOOR_ORDER = [
     "Kjeller",
