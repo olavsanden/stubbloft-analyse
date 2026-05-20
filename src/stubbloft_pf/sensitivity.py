@@ -672,6 +672,70 @@ def plot_ground_pct_by_radius(
     finish_figure(fig, save_path=save_path, show=show)
 
 
+def plot_pf_by_radius(
+    df: pd.DataFrame,
+    facade_label: str = "Murbygg",
+    save_path=None,
+    show: bool = False,
+) -> None:
+    # PF per etasje for stubbloft bevart ved ulike ground-shine radier.
+    # Én linje per radius, log x-akse — høyre side = bedre skjerming.
+    # Erstatter plot_pf_ratio_by_radius og plot_ground_pct_by_radius.
+
+    FLOOR_ORDER = [
+        "Kjeller", "1. etasje", "2. etasje",
+        "3. etasje", "4. etasje", "5. etasje",
+    ]
+
+    mask = (
+        df["building"].str.contains(facade_label, case=False, regex=False)
+        & df["building"].str.contains("stubbloft", case=False, regex=False)
+        & ~df["building"].str.contains("referanse", case=False, regex=False)
+    )
+    sub = df[mask].copy()
+
+    if sub.empty:
+        print(f"  Ingen data for {facade_label} stubbloft bevart")
+        return
+
+    floor_present = [f for f in FLOOR_ORDER if f in sub["label"].unique()]
+    y_map = {lbl: i for i, lbl in enumerate(floor_present)}
+
+    radii   = sorted(sub["ground_radius_m"].dropna().unique())
+    palette = plt.cm.plasma(np.linspace(0.1, 0.85, len(radii)))
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+    ax.set_xscale("log")
+
+    for r, color in zip(radii, palette):
+        r_sub = sub[sub["ground_radius_m"] == r].copy()
+        r_sub["_ord"] = r_sub["label"].map(y_map)
+        r_sub = r_sub.sort_values("_ord")
+        valid = r_sub[r_sub["label"].isin(y_map)]
+        ax.plot(
+            valid["PF"].values,
+            [y_map[lbl] for lbl in valid["label"]],
+            marker="o", linewidth=2.2, markersize=6,
+            color=color, label=f"R = {r:.0f} m",
+        )
+
+    ax.set_yticks(range(len(floor_present)))
+    ax.set_yticklabels(floor_present, fontsize=11)
+    ax.set_ylabel("Etasje", fontsize=11)
+    ax.set_xlabel("Beskyttelsesfaktor PF [-] (log-skala)", fontsize=11)
+    ax.set_title(
+        f"Ground-shine radius-sensitivitet — PF per etasje\n"
+        f"{facade_label} | Stubbloft bevart {M_STUBB_BEVART:.0f} kg/m²",
+        fontsize=12, fontweight="bold",
+    )
+    ax.grid(True, which="both", alpha=0.25, linewidth=0.6)
+    ax.spines[["top", "right"]].set_visible(False)
+    ax.legend(fontsize=10, loc="upper right", framealpha=0.9, edgecolor="#ccc")
+
+    fig.tight_layout()
+    finish_figure(fig, save_path=save_path, show=show)
+
+
 def plot_roof_model_comparison(
     df: pd.DataFrame,
     facade_label: str,

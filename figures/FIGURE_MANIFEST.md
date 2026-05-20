@@ -1,6 +1,6 @@
 # Figur-manifest
-Generert: 2026-05-14 20:51
-Kopiert: 73  ·  Manglende forventede: 0
+Generert: 2026-05-20 04:47
+Kopiert: 70  ·  Manglende forventede: 1
 
 ---
 
@@ -10,7 +10,7 @@ Kopiert: 73  ·  Manglende forventede: 0
   _PF-bånd med sensitivitetsbånd — Murbygg | Kjellervindu 40×60 cm_
 - `02_pf_ratio_radius_murbygg.png`  ✓
   _PF-ratio stubb/utsk per etasje, ulike ground radius — Murbygg_
-- `03_ground_pct_radius_murbygg.png`  ✓
+- `03_ground_pct_radius_murbygg.png`  ✗ MANGLER
   _Ground%-andel per etasje ved ulike ground radius — Murbygg_
 - `04_deck_multifocus_shapley_murbygg.png`  ✓
   _Shapley-verdier per dekke for tre målsett — Murbygg_
@@ -67,8 +67,6 @@ Kopiert: 73  ·  Manglende forventede: 0
 - `pf_band_trebygg_luftespalte_15x15_cm.png`
 
 ### radius/
-- `ground_pct_radius_murbygg.png`
-- `ground_pct_radius_trebygg.png`
 - `pf_ratio_radius_murbygg.png`
 - `pf_ratio_radius_trebygg.png`
 

@@ -260,6 +260,61 @@ def compute_roof_model_sensitivity():
     ]
 
 
+_FLOOR_IDX_ORDER  = [-1, 0, 1, 2, 3, 4]
+_FLOOR_IDX_LABELS = {-1: "Kjeller", 0: "1. etasje", 1: "2. etasje",
+                     2: "3. etasje", 3: "4. etasje", 4: "5. etasje"}
+
+
+def compute_roof_model_profiles():
+    """Per-floor PF for flat (0°) and saltak 45°. No 35° included."""
+    configs = [
+        ("Flatt tak",  replace(MURBYGG, roof_model="flat",   roof_pitch_deg=0.0)),
+        ("Saltak 45°", replace(MURBYGG, roof_model="sloped", roof_pitch_deg=45.0)),
+    ]
+    result = {}
+    for label, building in configs:
+        rows = calculate_rows_for_points(SCENARIO_NAME, POINT_NAME, POINTS, building)
+        result[label] = {r.floor: r.PF for r in rows}
+    return result
+
+
+def plot_roof_model_profiles(profiles):
+    """PF per etasje for flatt tak vs saltak 45°. Legend upper-left."""
+    COLORS  = {"Flatt tak": "#2166AC", "Saltak 45°": "#C0622B"}
+    MARKERS = {"Flatt tak": "o",       "Saltak 45°": "s"}
+
+    y      = np.arange(len(_FLOOR_IDX_ORDER))
+    labels = [_FLOOR_IDX_LABELS[fi] for fi in _FLOOR_IDX_ORDER]
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+    ax.set_xscale("log")
+
+    for label, floor_pf in profiles.items():
+        pf_vals = [floor_pf[fi] for fi in _FLOOR_IDX_ORDER]
+        ax.plot(pf_vals, y, color=COLORS[label], linewidth=2.5,
+                marker=MARKERS[label], markersize=7, label=label, zorder=3)
+
+    ax.set_yticks(y)
+    ax.set_yticklabels(labels, fontsize=10)
+    ax.set_ylabel("Etasje", fontsize=10)
+    ax.set_xlabel("Beskyttelsesfaktor PF [-] (log-skala)", fontsize=10)
+    ax.set_title(
+        "Takmodellsensitivitet – PF per etasje\n"
+        "Murbygg med stubbloft bevart · Kjellervindu 40×60 cm",
+        fontsize=12, fontweight="bold", pad=8,
+    )
+    ax.legend(fontsize=9, loc="upper left", framealpha=0.92, edgecolor="#ccc")
+    ax.grid(True, which="both", alpha=0.22, linewidth=0.6)
+    ax.spines[["top", "right"]].set_visible(False)
+
+    fig.tight_layout()
+    for ext in ("png", "pdf"):
+        path = OUT_FIG / f"sensitivity_roof_model_pf_profile.{ext}"
+        fig.savefig(path, dpi=300, bbox_inches="tight")
+        print(f"  Lagret: {path.relative_to(ROOT)}")
+    plt.close(fig)
+
+
 def compute_kjellerdekke_sensitivity():
     # same_as_floor: kjellerdekket bruker M_floor (202 kg/m²) — baseline
     # heavy_basement_ceiling: 300 kg/m² for kjellerdekke alene
@@ -611,6 +666,8 @@ def main():
         "sensitivity_tornado_pf_3etasje",
         baseline["PF_3etasje"],
     )
+    print("  Takmodellsensitivitet – PF-profil per etasje (flat vs saltak 45°)...")
+    plot_roof_model_profiles(compute_roof_model_profiles())
 
     print_qc(baseline, tornado_df, all_levels)
     print("\nFerdig.")

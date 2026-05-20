@@ -47,10 +47,9 @@ from .sensitivity import (
     plot_deck_pair_heatmap,
     plot_deck_pair_heatmap_setA,
     plot_deck_shapley,
-    plot_ground_pct_by_radius,
     plot_multifocus_best_by_n,
     plot_multifocus_shapley,
-    plot_pf_ratio_by_radius,
+    plot_pf_by_radius,
     plot_roof_model_comparison,
     run_basement_ceiling_sensitivity,
     run_clay_thickness_sensitivity,
@@ -460,14 +459,9 @@ def main() -> None:
         _mech_df.to_csv(output_dir / "pf_radius_mechanism.csv", index=False)
 
         for facade_label, _, _, fslug in _facade_configs:
-            plot_pf_ratio_by_radius(
+            plot_pf_by_radius(
                 _mech_df, facade_label,
                 save_path=FIGURE_DIR / f"pf_ratio_radius_{fslug}.png" if SAVE_FIGURES else None,
-                show=SHOW_FIGURES,
-            )
-            plot_ground_pct_by_radius(
-                _mech_df, facade_label,
-                save_path=FIGURE_DIR / f"ground_pct_radius_{fslug}.png" if SAVE_FIGURES else None,
                 show=SHOW_FIGURES,
             )
 

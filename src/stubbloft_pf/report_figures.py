@@ -313,11 +313,10 @@ def fig_kjeller_sensitivity(
     main_dir: Path,
     pdf_dir: Optional[Path],
 ) -> None:
-    """Kjeller-PF for ulike åpningsscenarioer, stubb vs utskiftet."""
+    """Kjeller-PF for 2 åpningsscenarioer (40x60 og luftespalte), log-skala, med datamerking."""
 
     sc_labels = {
         "Kjellervindu 40x60 cm": "Kjellervindu\n40×60 cm",
-        "Kjellervindu 60x30 cm": "Kjellervindu\n60×30 cm",
         "Luftespalte 15x15 cm":  "Luftespalte\n15×15 cm",
     }
     scenarios = list(sc_labels.keys())
@@ -332,19 +331,19 @@ def fig_kjeller_sensitivity(
     x = np.arange(len(scenarios))
     width = 0.35
 
-    fig, ax = plt.subplots(figsize=(8, 5))
-    ax.bar(x - width/2, pf_stubb, width, color=C["stubb"], label=LABEL_STUBB, alpha=0.85)
-    ax.bar(x + width/2, pf_utsk,  width, color=C["utskiftet"], label=LABEL_UTSK,  alpha=0.85)
+    fig, ax = plt.subplots(figsize=(7, 5))
+    bars_s = ax.bar(x - width/2, pf_stubb, width, color=C["stubb"],     label=LABEL_STUBB, alpha=0.85)
+    bars_u = ax.bar(x + width/2, pf_utsk,  width, color=C["utskiftet"], label=LABEL_UTSK,  alpha=0.85)
 
-    for i, (s, u) in enumerate(zip(pf_stubb, pf_utsk)):
-        ax.text(i - width/2, s + 1, f"{s:.0f}", ha="center", va="bottom",
-                fontsize=FS["annot"], color=C["stubb"], fontweight="bold")
-        ax.text(i + width/2, u + 1, f"{u:.0f}", ha="center", va="bottom",
-                fontsize=FS["annot"], color=C["utskiftet"], fontweight="bold")
+    ax.set_yscale("log")
+
+    for container, color in ((bars_s, C["stubb"]), (bars_u, C["utskiftet"])):
+        ax.bar_label(container, fmt="%.1f", padding=4,
+                     fontsize=FS["annot"], fontweight="bold", color=color)
 
     ax.set_xticks(x)
     ax.set_xticklabels([sc_labels[s] for s in scenarios], fontsize=FS["tick"])
-    ax.set_ylabel("Kjeller-PF [-]", fontsize=FS["label"])
+    ax.set_ylabel("Kjeller-PF [-] (log-skala)", fontsize=FS["label"])
     ax.set_title(f"Kjeller-PF per kjelleråpning — {facade}bygg", fontsize=FS["title"], pad=10)
     ax.legend(fontsize=FS["legend"])
     _style_ax(ax)
